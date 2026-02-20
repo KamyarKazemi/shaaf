@@ -41,10 +41,6 @@ const observer = new IntersectionObserver(
 
 reveals.forEach((el) => observer.observe(el));
 
-// =========================
-// IMAGE SLIDER
-// =========================
-
 class ImageSlider {
   constructor(container) {
     this.container = container;
@@ -66,11 +62,9 @@ class ImageSlider {
   }
 
   init() {
-    // Button navigation - swapped for RTL
     this.prevBtn?.addEventListener("click", () => this.next());
     this.nextBtn?.addEventListener("click", () => this.prev());
 
-    // Dot navigation
     this.dots.forEach((dot, index) => {
       dot.addEventListener("click", () => this.goToSlide(index));
     });
@@ -87,20 +81,15 @@ class ImageSlider {
 
     this.wrapper.addEventListener("mouseleave", this.touchEnd.bind(this));
 
-    // Prevent context menu on long press
     this.wrapper.addEventListener("contextmenu", (e) => {
       if (this.isDragging) e.preventDefault();
     });
 
-    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
         e.key === "ArrowLeft" ? this.prev() : this.next();
       }
     });
-
-    // Auto-play (optional)
-    // this.startAutoPlay();
   }
 
   touchStart(e) {
@@ -127,12 +116,10 @@ class ImageSlider {
 
     const movedBy = this.currentTranslate - this.prevTranslate;
 
-    // For RTL: If moved enough positive (right to left), go to next slide
     if (movedBy > 50 && this.currentIndex < this.slides.length - 1) {
       this.currentIndex++;
     }
 
-    // For RTL: If moved enough negative (left to right), go to previous slide
     if (movedBy < -50 && this.currentIndex > 0) {
       this.currentIndex--;
     }
@@ -173,7 +160,6 @@ class ImageSlider {
   }
 
   updateSlider() {
-    // For RTL, we need to reverse the direction
     this.currentTranslate = this.currentIndex * this.wrapper.offsetWidth;
     this.prevTranslate = this.currentTranslate;
     this.setSliderPosition();
@@ -210,7 +196,6 @@ class ImageSlider {
   }
 }
 
-// Initialize slider
 const sliderContainer = document.querySelector(".slider-container");
 if (sliderContainer) {
   new ImageSlider(sliderContainer);

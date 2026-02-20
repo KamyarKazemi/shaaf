@@ -16,10 +16,6 @@
   --transition: 0.3s ease;
 }
 
-/* ========================= */
-/* RESET */
-/* ========================= */
-
 *,
 *::before,
 *::after {
@@ -49,10 +45,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* ========================= */
-/* HEADER */
-/* ========================= */
 
 .header {
   position: sticky;
@@ -160,10 +152,6 @@ body {
   box-shadow: 0 18px 45px rgba(108, 99, 255, 0.5);
 }
 
-/* ========================= */
-/* MOBILE MENU */
-/* ========================= */
-
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -190,10 +178,6 @@ body {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* ========================= */
-/* MAIN */
-/* ========================= */
-
 .main {
   flex: 1;
   margin-top: 80px;
@@ -201,10 +185,6 @@ body {
   flex-direction: column;
   gap: 120px;
 }
-
-/* ========================= */
-/* HERO */
-/* ========================= */
 
 .hero {
   display: grid;
@@ -271,10 +251,6 @@ body {
   transform: scale(1.05);
 }
 
-/* ========================= */
-/* SECTION BLOCK */
-/* ========================= */
-
 .section-block {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -302,10 +278,6 @@ body {
   line-height: 1.9;
   max-width: 500px;
 }
-
-/* ========================= */
-/* CENTERED IMAGE VARIANT */
-/* ========================= */
 
 .section-block.centered-block {
   grid-template-columns: 1fr;
@@ -352,10 +324,6 @@ body {
   max-width: 700px;
 }
 
-/* ========================= */
-/* IMAGE SLIDER */
-/* ========================= */
-
 .slider-container {
   position: relative;
   width: 100%;
@@ -388,7 +356,6 @@ body {
   aspect-ratio: 16 / 10;
 }
 
-/* Navigation Buttons */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -432,7 +399,6 @@ body {
   right: 20px;
 }
 
-/* Dots Navigation */
 .slider-dots {
   position: absolute;
   bottom: 20px;
@@ -465,7 +431,6 @@ body {
   border-radius: 5px;
 }
 
-/* Touch/Swipe Support */
 .slider-wrapper.dragging {
   cursor: grabbing;
 }
@@ -473,10 +438,6 @@ body {
 .slider-wrapper.dragging .slider-track {
   transition: none;
 }
-
-/* ========================= */
-/* SCROLL REVEAL */
-/* ========================= */
 
 .reveal {
   opacity: 0;
@@ -488,10 +449,6 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ========================= */
-/* FOOTER */
-/* ========================= */
 
 .footer {
   margin: 60px 0 20px;
@@ -561,10 +518,6 @@ body {
   border-top: 1px solid var(--glass-border);
 }
 
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
 @media (max-width: 1024px) {
   .hero,
   .section-block {
@@ -628,11 +581,10 @@ body {
     max-width: 100%;
   }
 
-  /* Slider mobile adjustments */
   .slider-btn {
     width: 40px;
     height: 40px;
-    opacity: 1; /* Always visible on mobile */
+    opacity: 1;
   }
 
   .slider-btn.prev {
