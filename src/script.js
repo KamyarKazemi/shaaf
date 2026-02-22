@@ -196,7 +196,6 @@ class ImageSlider {
   }
 }
 
-const sliderContainer = document.querySelector(".slider-container");
-if (sliderContainer) {
-  new ImageSlider(sliderContainer);
-}
+document.querySelectorAll(".slider-container").forEach((container) => {
+  new ImageSlider(container);
+});
