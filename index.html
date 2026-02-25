@@ -28,13 +28,20 @@
           </div>
 
           <nav class="nav">
-            <span>برنامه هنرستان</span>
-            <span>مشاورین</span>
-            <span>مدیریت هنرستان</span>
-            <span>شماره های ضروری</span>
+            <span data-scroll="section-barnameye">برنامه هنرستان</span>
+            <span data-scroll="section-moshaverIn">مشاورین</span>
+            <span data-scroll="section-modiriat">مدیریت هنرستان</span>
+            <span data-scroll="section-shomare">شماره های ضروری</span>
+            <div class="nav-gender-pill" id="navGenderPill">
+              <button class="pill-option active" data-gender="boys">پسرانه</button>
+              <button class="pill-option" data-gender="girls">دخترانه</button>
+            </div>
           </nav>
 
-          <a href="tel:+989123456789" class="cta">هنرستان پسرانه</a>
+          <button class="cta gender-toggle" id="genderToggle">
+            <span class="checkmark">✓</span>
+            <span class="gender-label">هنرستان پسرانه</span>
+          </button>
 
           <div class="menu-toggle">
             <span></span>
@@ -47,14 +54,14 @@
       <main class="main">
         <section class="hero">
           <div class="hero-content reveal">
-            <h1>هنرستان غیر دولتی شایستگان علم و هنر فارس</h1>
-            <p>
-              مجتمع آموزشی شعف با تمرکز بر مهارت‌محوری، تکنولوژی و آموزش عملی،
+            <h1 data-key="hero-title">هنرستان غیر دولتی پسرانه شایستگان علم و هنر فارس</h1>
+            <p data-key="hero-desc">
+              مجتمع آموزشی شعف پسرانه با تمرکز بر مهارت‌محوری، تکنولوژی و آموزش عملی،
               بستری حرفه‌ای برای رشد دانش‌آموزان در مسیر تخصصی فراهم کرده است.
             </p>
             <div class="hero-buttons">
-              <a href="#" class="primary-btn">مشاهده رشته ها</a>
-              <a href="#" class="secondary-btn">درباره مدرسه</a>
+              <a href="#" class="primary-btn" data-scroll="section-rashte">مشاهده رشته ها</a>
+              <a href="#" class="secondary-btn" data-scroll="section-darbare">درباره مدرسه</a>
             </div>
           </div>
 
@@ -124,7 +131,7 @@
           </div>
         </section>
 
-        <section class="section-block reveal centered-block">
+        <section id="section-darbare" class="section-block reveal centered-block">
           <div class="image-wrapper">
             <img
               src="/IMG_20200708_154757_1-e1752257714515.png"
@@ -134,16 +141,16 @@
           </div>
 
           <div class="section-text centered-text">
-            <h2>درباره شعف</h2>
-            <p>
-              شعف محیطی پویا، مدرن و مهارت‌محور است که با بهره‌گیری از تجهیزات
+            <h2 data-key="about-title">درباره شعف پسرانه</h2>
+            <p data-key="about-desc">
+              شعف پسرانه محیطی پویا، مدرن و مهارت‌محور است که با بهره‌گیری از تجهیزات
               تخصصی و اساتید حرفه‌ای، دانش‌آموزان را برای ورود مستقیم به بازار
               کار آماده می‌کند.
             </p>
           </div>
         </section>
 
-        <section class="section-block reverse reveal">
+        <section class="section-block reverse reveal" id="section-rashte">
           <div class="slider-container">
             <div class="slider-wrapper">
               <div class="slider-track">
@@ -201,70 +208,66 @@
 
           <div class="section-text">
             <h2>رشته ها</h2>
-            <p>
+            <p data-key="rashte-desc">
               شبکه و نرم افزار، ماشین ابزار و الکترونیک با تمرکز بر مهارت عملی،
               پروژه محور و کارگاهی ارائه می‌شوند.
             </p>
           </div>
         </section>
 
-        <section class="section-block reveal">
+        <section id="section-tajhizat" class="section-block reveal">
           <div class="section-image">
             <img src="/00000-2048x1153.jpg" alt="تجهیزات آموزشی" />
           </div>
           <div class="section-text">
-            <h2>تجهیزات</h2>
-            <p>
-              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف یکی از مدارس
+            <h2 data-key="tajhizat-title">تجهیزات</h2>
+            <p data-key="tajhizat-desc">
+              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف پسرانه یکی از مدارس
               تخصصی پیشرو در حوزه مهارت‌آموزی باشد.
             </p>
           </div>
         </section>
-        <section class="section-block reveal">
+        <section id="section-barnameye" class="section-block reveal">
           <div class="section-image">
             <img src="/00000-2048x1153.jpg" alt="برنامه هنرستان" />
           </div>
           <div class="section-text">
-            <h2>برنامه هنرستان</h2>
-            <p>
-              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف یکی از مدارس
-              تخصصی پیشرو در حوزه مهارت‌آموزی باشد.
+            <h2 data-key="barnameye-title">برنامه هنرستان پسرانه</h2>
+            <p data-key="barnameye-desc">
+              برنامه هنرستان پسرانه شعف بر پایه کارگاه عملی و پروژه‌محور طراحی شده تا دانش‌آموزان در کوتاه‌ترین زمان آماده کار شوند.
             </p>
           </div>
         </section>
-        <section class="section-block reveal">
+        <section id="section-moshaverIn" class="section-block reveal">
           <div class="section-image">
             <img src="/00000-2048x1153.jpg" alt="مشاورین" />
           </div>
           <div class="section-text">
-            <h2>مشاورین</h2>
-            <p>
-              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف یکی از مدارس
-              تخصصی پیشرو در حوزه مهارت‌آموزی باشد.
+            <h2 data-key="moshaverIn-title">مشاورین پسرانه</h2>
+            <p data-key="moshaverIn-desc">
+              تیم مشاورین هنرستان پسرانه آماده پاسخگویی به سؤالات تحصیلی، شغلی و روانشناختی دانش‌آموزان هستند.
             </p>
           </div>
         </section>
-        <section class="section-block reveal">
+        <section id="section-modiriat" class="section-block reveal">
           <div class="section-image">
             <img src="/00000-2048x1153.jpg" alt="مدیریت هنرستان" />
           </div>
           <div class="section-text">
-            <h2>مدیریت هنرستان</h2>
-            <p>
-              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف یکی از مدارس
-              تخصصی پیشرو در حوزه مهارت‌آموزی باشد.
+            <h2 data-key="modiriat-title">مدیریت هنرستان پسرانه</h2>
+            <p data-key="modiriat-desc">
+              مدیریت هنرستان پسرانه با تجربه و تخصص در آموزش فنی و حرفه‌ای، محیطی منظم و انگیزش‌بخش برای دانش‌آموزان فراهم کرده است.
             </p>
           </div>
         </section>
-        <section class="section-block reveal">
+        <section id="section-shomare" class="section-block reveal">
           <div class="section-image">
             <img src="/00000-2048x1153.jpg" alt="شماره های ضروری" />
           </div>
           <div class="section-text">
-            <h2>شماره های ضروری</h2>
-            <p>
-              کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف یکی از مدارس
-              تخصصی پیشرو در حوزه مهارت‌آموزی باشد.
+            <h2 data-key="shomare-title">شماره های ضروری پسرانه</h2>
+            <p data-key="shomare-desc">
+              برای ارتباط با هنرستان پسرانه شعف، ثبت‌نام و کسب اطلاعات بیشتر با شماره‌های زیر تماس بگیرید.
             </p>
           </div>
         </section>
@@ -273,7 +276,7 @@
       <footer class="footer">
         <div class="footer-inner">
           <div class="footer-brand">
-            <h2>شایستگان علم و هنر فارس</h2>
+            <h2 data-key="footer-title">شایستگان علم و هنر فارس - پسرانه</h2>
             <p>مدرسه تخصصی فناوری و مهارت</p>
           </div>
 

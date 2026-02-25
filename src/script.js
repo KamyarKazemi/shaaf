@@ -1,3 +1,113 @@
+// ─── Smooth scroll ───────────────────────────────────────────────────────────
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const headerHeight = document.querySelector(".header")?.offsetHeight ?? 0;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
+document.querySelectorAll("[data-scroll]").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    scrollToSection(el.dataset.scroll);
+  });
+});
+
+// ─── Gender state ─────────────────────────────────────────────────────────────
+function createState(initialValue) {
+  let _value = initialValue;
+  const _subscribers = [];
+  return {
+    get value() { return _value; },
+    set value(newVal) {
+      _value = newVal;
+      _subscribers.forEach((fn) => fn(_value));
+    },
+    subscribe(fn) { _subscribers.push(fn); },
+  };
+}
+
+const CONTENT = {
+  boys: {
+    label: "هنرستان پسرانه",
+    "hero-title": "هنرستان غیر دولتی پسرانه شایستگان علم و هنر فارس",
+    "hero-desc": "مجتمع آموزشی شعف پسرانه با تمرکز بر مهارت‌محوری، تکنولوژی و آموزش عملی، بستری حرفه‌ای برای رشد دانش‌آموزان در مسیر تخصصی فراهم کرده است.",
+    "about-title": "درباره شعف پسرانه",
+    "about-desc": "شعف پسرانه محیطی پویا، مدرن و مهارت‌محور است که با بهره‌گیری از تجهیزات تخصصی و اساتید حرفه‌ای، دانش‌آموزان را برای ورود مستقیم به بازار کار آماده می‌کند.",
+    "rashte-desc": "شبکه و نرم افزار، ماشین ابزار و الکترونیک با تمرکز بر مهارت عملی، پروژه محور و کارگاهی ارائه می‌شوند.",
+    "tajhizat-title": "تجهیزات",
+    "tajhizat-desc": "کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف پسرانه یکی از مدارس تخصصی پیشرو در حوزه مهارت‌آموزی باشد.",
+    "barnameye-title": "برنامه هنرستان پسرانه",
+    "barnameye-desc": "برنامه هنرستان پسرانه شعف بر پایه کارگاه عملی و پروژه‌محور طراحی شده تا دانش‌آموزان در کوتاه‌ترین زمان آماده کار شوند.",
+    "moshaverIn-title": "مشاورین پسرانه",
+    "moshaverIn-desc": "تیم مشاورین هنرستان پسرانه آماده پاسخگویی به سؤالات تحصیلی، شغلی و روانشناختی دانش‌آموزان هستند.",
+    "modiriat-title": "مدیریت هنرستان پسرانه",
+    "modiriat-desc": "مدیریت هنرستان پسرانه با تجربه و تخصص در آموزش فنی و حرفه‌ای، محیطی منظم و انگیزش‌بخش برای دانش‌آموزان فراهم کرده است.",
+    "shomare-title": "شماره های ضروری پسرانه",
+    "shomare-desc": "برای ارتباط با هنرستان پسرانه شعف، ثبت‌نام و کسب اطلاعات بیشتر با شماره‌های زیر تماس بگیرید.",
+    "footer-title": "شایستگان علم و هنر فارس - پسرانه",
+  },
+  girls: {
+    label: "هنرستان دخترانه",
+    "hero-title": "هنرستان غیر دولتی دخترانه شایستگان علم و هنر فارس",
+    "hero-desc": "مجتمع آموزشی شعف دخترانه با تمرکز بر مهارت‌محوری، خلاقیت و آموزش عملی، بستری حرفه‌ای برای رشد دانش‌آموزان دختر در مسیر تخصصی فراهم کرده است.",
+    "about-title": "درباره شعف دخترانه",
+    "about-desc": "شعف دخترانه محیطی پویا، مدرن و مهارت‌محور است که با بهره‌گیری از تجهیزات تخصصی و اساتید حرفه‌ای، دانش‌آموزان دختر را برای ورود مستقیم به بازار کار آماده می‌کند.",
+    "rashte-desc": "رشته‌های حسابداری، طراحی گرافیک و صنایع غذایی با تمرکز بر مهارت عملی، پروژه محور و کارگاهی ارائه می‌شوند.",
+    "tajhizat-title": "تجهیزات",
+    "tajhizat-desc": "کارگاه‌های مجهز و فضای استاندارد آموزشی باعث شده شعف دخترانه یکی از مدارس تخصصی پیشرو در حوزه مهارت‌آموزی باشد.",
+    "barnameye-title": "برنامه هنرستان دخترانه",
+    "barnameye-desc": "برنامه هنرستان دخترانه شعف بر پایه خلاقیت، مهارت و کار تیمی طراحی شده تا دانش‌آموزان دختر به‌خوبی آماده ورود به بازار کار شوند.",
+    "moshaverIn-title": "مشاورین دخترانه",
+    "moshaverIn-desc": "تیم مشاورین هنرستان دخترانه آماده پاسخگویی به سؤالات تحصیلی، شغلی و روانشناختی دانش‌آموزان دختر هستند.",
+    "modiriat-title": "مدیریت هنرستان دخترانه",
+    "modiriat-desc": "مدیریت هنرستان دخترانه با تجربه و تخصص در آموزش فنی و حرفه‌ای، محیطی امن و انگیزش‌بخش برای دانش‌آموزان دختر فراهم کرده است.",
+    "shomare-title": "شماره های ضروری دخترانه",
+    "shomare-desc": "برای ارتباط با هنرستان دخترانه شعف، ثبت‌نام و کسب اطلاعات بیشتر با شماره‌های زیر تماس بگیرید.",
+    "footer-title": "شایستگان علم و هنر فارس - دخترانه",
+  },
+};
+
+const gender = createState("boys");
+
+const genderToggle = document.getElementById("genderToggle");
+const genderLabel = genderToggle?.querySelector(".gender-label");
+
+// pill buttons (mobile nav)
+const pillOptions = document.querySelectorAll(".pill-option");
+pillOptions.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    gender.value = btn.dataset.gender;
+  });
+});
+
+if (genderToggle) {
+  genderToggle.addEventListener("click", () => {
+    gender.value = gender.value === "boys" ? "girls" : "boys";
+  });
+
+  gender.subscribe((g) => {
+    const content = CONTENT[g];
+
+    // update desktop button
+    genderLabel.textContent = content.label;
+    genderToggle.classList.toggle("is-girls", g === "girls");
+
+    // update mobile pill
+    pillOptions.forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.gender === g);
+    });
+
+    // update all data-key elements
+    document.querySelectorAll("[data-key]").forEach((el) => {
+      const key = el.dataset.key;
+      if (content[key]) el.textContent = content[key];
+    });
+  });
+}
+
+// ─── Menu toggle ──────────────────────────────────────────────────────────────
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 

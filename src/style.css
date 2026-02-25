@@ -152,6 +152,72 @@ body {
   box-shadow: 0 18px 45px rgba(108, 99, 255, 0.5);
 }
 
+.gender-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.gender-toggle .checkmark {
+  font-size: 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gender-toggle.is-girls {
+  background: linear-gradient(135deg, #c44fba, #8e2ba0);
+}
+
+.gender-toggle.is-girls:hover {
+  box-shadow: 0 18px 45px rgba(196, 79, 186, 0.5);
+}
+
+.nav-gender-pill {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-gender-pill {
+    display: flex;
+    align-self: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .pill-option {
+    flex: 1;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .pill-option.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+  }
+
+  .pill-option[data-gender="girls"].active {
+    background: linear-gradient(135deg, #c44fba, #8e2ba0);
+    box-shadow: 0 4px 15px rgba(196, 79, 186, 0.4);
+  }
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
