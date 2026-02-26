@@ -60,21 +60,37 @@ const gender = createState(urlGender === "girls" ? "girls" : "boys");
 const genderToggle = document.getElementById("genderToggle");
 const genderLabel = genderToggle?.querySelector(".gender-label");
 
-// pill buttons (mobile nav) — in-page toggle
+// helper: build URL with a given gender param
+function buildGenderUrl(g) {
+  const url = new URL(window.location.href);
+  if (g === "boys") {
+    url.searchParams.delete("gender");
+  } else {
+    url.searchParams.set("gender", g);
+  }
+  return url.toString();
+}
+
+// pill buttons (mobile nav) — open new tab with selected gender
 const pillOptions = document.querySelectorAll(".pill-option");
 pillOptions.forEach((btn) => {
   btn.addEventListener("click", () => {
-    gender.value = btn.dataset.gender;
+    const g = btn.dataset.gender;
+    if (g === gender.value) return; // already on this gender, do nothing
+    window.open(buildGenderUrl(g), "_blank");
   });
 });
 
 if (genderToggle) {
-  // desktop button — open opposite gender in new tab
+  // desktop — new tab; mobile — same tab
   genderToggle.addEventListener("click", () => {
     const opposite = gender.value === "boys" ? "girls" : "boys";
-    const url = new URL(window.location.href);
-    url.searchParams.set("gender", opposite);
-    window.open(url.toString(), "_blank");
+    const url = buildGenderUrl(opposite);
+    if (window.innerWidth <= 768) {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank");
+    }
   });
 
   gender.subscribe((g) => {
